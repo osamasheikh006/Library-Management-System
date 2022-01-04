@@ -1,1 +1,3 @@
-# labiray-management-system
+LIBRARY MANMAGEMENT SYSTEM
+
+LANGUAGE USED ---->>>>   C#
