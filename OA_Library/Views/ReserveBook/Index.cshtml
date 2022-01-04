@@ -1,0 +1,118 @@
+﻿@model IEnumerable<OA_Library.Models.BookTable>
+
+@{
+    ViewBag.Title = "All Book";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            Issue Books List
+            <div class="input-group" style="margin-left:900px;">
+                @using (Html.BeginForm("Index", "ReserveBook", FormMethod.Get))
+                {
+
+                    @Html.TextBox("search", null, new { @class = "bx bx-search-alt" })<input type="submit" value="Search" class="btn btn-info" />
+                }
+            </div>
+        </h6>
+        <h3 class="text-success">@ViewBag.Message</h3>
+    </div>
+    
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.BookTitle)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ShortDescription)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.BookName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Edition)
+                            </th>
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.TotalCopies)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.RegDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Price)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>*@
+                            <th>
+                                @Html.DisplayNameFor(model => model.BookTypeTable.Name)
+                            </th>
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.DepartmentTable.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.UserTable.UserName)
+                                </th>*@
+                            <th>Action</th>
+                        </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BookTitle)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ShortDescription)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BookName)
+                                @Html.DisplayFor(modelItem => item.Author)
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Edition)
+                            </td>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.TotalCopies)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RegDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BookTypeTable.Name)
+                            </td>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.DepartmentTable.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserTable.UserName)
+                                </td>*@
+                            <td>
+                                @Html.ActionLink("Reserve Book", "ReserveBook", new { id = item.BookID }, new { @class = "btn btn-success" })
+
+                            </td>
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

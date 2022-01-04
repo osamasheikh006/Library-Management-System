@@ -1,0 +1,69 @@
+﻿@model IEnumerable<OA_Library.Models.BookFineTable>
+
+@{
+    ViewBag.Title = "PendindFine";
+}
+
+<h2>PendindFine</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FineDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FineAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceiveAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfDays)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookTable.BookTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeTable.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserTable.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FineDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FineAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReceiveAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfDays)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookTable.BookTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeTable.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserTable.UserName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BookFineID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BookFineID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BookFineID })
+        </td>
+    </tr>
+}
+
+</table>
